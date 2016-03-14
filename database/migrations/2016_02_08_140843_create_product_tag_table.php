@@ -15,6 +15,7 @@ class CreateProductTagTable extends Migration
         Schema::create('product_tag', function (Blueprint $table) {
             $table->integer('product_id')->unsigned()->nullable();
             $table->integer('tag_id')->unsigned()->nullable();
+            $table->unique(['product_id', 'tag_id']);
             $table->foreign('product_id')->references('id')->on('products')->onDelete('CASCADE');
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('CASCADE');
         });

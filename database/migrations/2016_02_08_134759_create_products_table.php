@@ -15,13 +15,13 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned()->nullable();
-            $table->string('title',100);
-            $table->decimal('price',6,2);
-            $table->string('slug',100);
+            $table->decimal('price', 6,2);
             $table->smallInteger('quantity')->unsigned();
+            $table->string('title', 100);
+            $table->string('slug', 100);
             $table->text('abstract');
             $table->text('content');
-            $table->enum('status',['published','unpublished'])->default('unpublished');
+            $table->enum('status', ['published', 'unpublished'])->default('unpublished');
             $table->dateTime('published_at');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('SET NULL');
             $table->timestamps();

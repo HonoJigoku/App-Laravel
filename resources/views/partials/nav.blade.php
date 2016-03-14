@@ -6,6 +6,16 @@
         @empty
         @endforelse
         <li><a href="/contact">Contact</a></li>
-        <li><a href="/login">Login</a></li>
+        @if(Auth::check())
+            <li><a href="{{url('product')}}">Dashboard Product</a></li>
+            <li><a href="{{url('logout')}}">Logout</a></li>
+        @else
+            <li><a href="{{url('login')}}">Login</a></li>
+            <li><a href="{{url('cart')}}">Cart</a></li>
+        @endif
+
+        @if(Session::has('cart'))
+            <li><a href="{{url('cart')}}">Cart: {{count(Session::get('cart'))}}</a></li>
+        @endif
     </ul>
 </nav>

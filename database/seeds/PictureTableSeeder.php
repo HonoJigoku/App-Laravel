@@ -23,8 +23,8 @@ class PictureTableSeeder extends Seeder
 
         foreach($products as $product){
 
-            $uri = str_random(12).'_400x200.jpg';
-            $file = file_get_contents('http://lorempixel.com/400/200/');
+            $uri = str_random(12).'_350x200.jpg';
+            $file = file_get_contents('http://lorempicsum.com/rio/350/200/1');
 
             Storage::put($uri, $file);
             Picture::create([
